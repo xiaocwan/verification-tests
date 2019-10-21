@@ -216,6 +216,11 @@ wait_form_loaded:
   element:
     selector:
       css: form
+wait_yaml_editor_loaded:
+  element:
+    selector:
+      css: .yaml-editor
+    timeout: 60
 ## -------- check resource key and values pairs ------
 check_resource_details:
   action:

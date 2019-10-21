@@ -1,0 +1,36 @@
+create_clusterautoscaler:
+  action: goto_cluster_settings_page
+  params:
+    text: 'Create Autoscaler'
+    link_url: '/k8s/cluster/autoscaling.openshift.io~v1~ClusterAutoscaler/~new'
+  action: click_link_with_text
+  action: wait_yaml_editor_loaded
+
+
+patch_ace_editor_content:
+  # element:
+  #   selector:
+  #     class: yaml-editor
+  params:
+    editor_xpath: //div[contains(@class,'lines-content')]
+  scripts:
+  - file: json-patch
+    expect_result: ~
+  - file: ace-editor
+    expect_result: ~
+  - command: |
+      require(["ace/ace"], function(ace) {
+
+        // documentation: https://developer.mozilla.org/en-US/docs/Web/API/Document/evaluate	        editor_element = document.evaluate(`<editor_xpath>`, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+        editor = ace.edit(editor_element);
+        window.qe_ace_editor.patch(editor, "<content_type>", <patch>);
+        return true;
+
+
+      })
+    expect_result: true
+
+
+
+
+
