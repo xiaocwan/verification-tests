@@ -85,6 +85,7 @@ create_persistent_volume_claims:
 expand_pvc_size:
   params:
     button_text: Expand
+  #action: wait_form_loaded
   action: set_request_size
   action: choose_request_size_unit
   action: click_button
