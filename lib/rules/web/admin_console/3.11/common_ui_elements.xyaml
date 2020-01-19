@@ -56,11 +56,6 @@ choose_item_from_list:
   - selector:
       xpath: //li//*[text()='<item>']
     op: click
-submit_changes:
-  element:
-    selector:
-      xpath: //button[@type='submit']
-    op: click
 click_one_dropdown_action:
   action: click_resource_action_button
   action: choose_item_from_list
